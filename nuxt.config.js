@@ -18,7 +18,6 @@ export default {
   alias: {
     '@screens': resolve(__dirname, './screens'),
     '@utils': resolve(__dirname, './utils'),
-
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
