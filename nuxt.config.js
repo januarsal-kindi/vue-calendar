@@ -23,10 +23,13 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
   target: 'static', // default is 'server',
-  ssr:false,
+  ssr: false,
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/vue-agile'],
+  plugins: [
+    '~/plugins/vue-agile',
+    { src: '~/plugins/vue-datepicker', ssr: false }, // datepicker plugin here
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -38,7 +41,6 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     '@nuxt/postcss8',
-
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -61,7 +63,6 @@ export default {
         autoprefixer: {},
       },
     },
-    transpile: ['vue-agile']
-
+    transpile: ['vue-agile'],
   },
 }

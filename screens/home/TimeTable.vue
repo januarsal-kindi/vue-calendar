@@ -122,8 +122,6 @@ export default {
       const startTimeOfDate = dayjs(this.selectedDate)
         .set('hour', 0)
         .set('minute', 0)
-
-        console.log("startTimeOfDate",startTimeOfDate)
       return (startTimeFormat.diff(startTimeOfDate, 'minute') / 15) * 2 + 2
     },
     dayjs,

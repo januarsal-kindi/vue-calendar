@@ -88,7 +88,7 @@
             <div class="flex-1 mx-4 flex flex-col justify-center">
               <p class="text-sm font-semibold">{{ eventCalendar.title }}</p>
               <p class="text-gray-400 text-xs">
-                {{ eventCalendar.startTime }} - {{ eventCalendar.endTime }}
+                {{ dayjs(eventCalendar.startTime).format('HH:mm') }} - {{ dayjs(eventCalendar.endTime).format('HH:mm') }}
               </p>
             </div>
             <div>

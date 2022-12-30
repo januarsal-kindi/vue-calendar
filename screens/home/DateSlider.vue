@@ -14,58 +14,60 @@
         />
       </div>
 
-      <transition-group
-        name="slide-fade"
-        mode="out-in"
-        class="flex justify-around"
-        tag="div"
-      >
-        <div
-          v-for="(day, index) in daysOfWeek"
-          :key="index + day.get('date')"
-          class="h-28 w-28 flex cursor-pointer"
-          @click="
-            () => {
-              setSelectedDate(day)
-            }
-          "
+      <div class="relative ml-8 mr-4">
+        <transition-group
+          name="slide-fade"
+          mode="out-in"
+          class="grid grid-cols-7 gap-3"
+          tag="div"
         >
-          <div class="px-2 mr-1 flex items-end">
-            <ol
-              class="h-3/5 relative border-l border-gray-200 dark:border-gray-700"
-            >
-              <li class="">
-                <div class="absolute dot-position-horizontal">
-                  <span
-                    class="mb-1 flex justify-center items-center w-2 h-2 border bg-black border-gray-400 rounded-full"
-                  >
-                  </span>
-                  <span
-                    v-for="event in getEventByDate(day)"
-                    :key="`${event.id}-rounded`"
-                    :style="{
-                      background: event.color,
-                    }"
-                    class="mb-1 flex justify-center items-center w-2 h-2 border bg-black border-gray-400 rounded-full"
-                  >
-                  </span>
-                </div>
-              </li>
-            </ol>
-          </div>
           <div
-            class="flex flex-col justify-center"
-            :class="{
-              'text-gray-400': !dayjs(selectedDate).isSame(day, 'day'),
-            }"
+            v-for="(day, index) in daysOfWeek"
+            :key="index + day.get('date')"
+            class="h-28 w-full flex cursor-pointer "
+            @click="
+              () => {
+                setSelectedDate(day)
+              }
+            "
           >
-            <h1 class="text-2xl">
-              {{ day.get('date') }}
-            </h1>
-            <h3 class="text-sm">{{ getDayName(day.get('day')) }}</h3>
+            <div class="px-2 mr-1 flex items-end">
+              <ol
+                class="h-1/2 relative border-l border-gray-200 dark:border-gray-700"
+              >
+                <li class="">
+                  <div class="absolute dot-position-horizontal">
+                    <span
+                      class="mb-1 flex justify-center items-center w-2 h-2 border bg-black border-gray-400 rounded-full"
+                    >
+                    </span>
+                    <span
+                      v-for="event in getEventByDate(day)"
+                      :key="`${event.id}-rounded`"
+                      :style="{
+                        background: event.color,
+                      }"
+                      class="mb-1 flex justify-center items-center w-2 h-2 border bg-black border-gray-400 rounded-full"
+                    >
+                    </span>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div
+              class="flex flex-col justify-center"
+              :class="{
+                'text-gray-400': !dayjs(selectedDate).isSame(day, 'day'),
+              }"
+            >
+              <h1 class="text-2xl">
+                {{ day.get('date') }}
+              </h1>
+              <h3 class="text-sm">{{ getDayName(day.get('day')) }}</h3>
+            </div>
           </div>
-        </div>
-      </transition-group>
+        </transition-group>
+      </div>
     </div>
   </client-only>
 </template>
@@ -127,5 +129,6 @@ export default {
 /* .slide-fade-leave-active for <2.1.8 */ {
   transform: translateX(50vw);
   opacity: 0;
+  position: absolute;
 }
 </style>

@@ -3,7 +3,7 @@
     <div>
       <CalendarMonthAndDate />
     </div>
-    <div class="grid grid-cols-3 mt-8 container mx-auto gap-6">
+    <div class="grid mx-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 mt-8 container  gap-6">
       <div class="">
         <ListEvent />
       </div>
