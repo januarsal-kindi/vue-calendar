@@ -18,7 +18,7 @@
       <div class="hidden xl:block lg:block md:block 2xl:block">
         <DateSlider />
       </div>
-      <div class="block xl:block lg:hidden md:hidden 2xl:hidden">
+      <div class="block xl:hidden lg:hidden md:hidden 2xl:hidden">
         <DateSliderMobile />
       </div>
     </div>
