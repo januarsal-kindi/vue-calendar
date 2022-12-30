@@ -3,6 +3,8 @@
     <div class="container mx-auto">
       <div class="text-lg font-semibold">
         <!-- {{dayjs(selectedDate).format('MMMM YYYY')}} -->
+          <client-only placeholder="Loading...">
+
         <VueDatePicker
           :value="dayjs(selectedDate).format('YYYY-MM-DD')"
           @input="
@@ -11,6 +13,7 @@
             }
           "
         />
+          </client-only>
       </div>
       <div class="hidden xl:block lg:block md:block 2xl:block">
         <DateSlider />

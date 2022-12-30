@@ -1,75 +1,73 @@
 <template>
-  <client-only placeholder="Loading...">
-    <div class="mt-1 relative">
-      <div
-        class="absolute m-auto left-0 right-0 w-full flex justify-between transform -translate-y-1/2 top-1/2"
-      >
-        <ArrowCircleLeftIcon
-          class="hover:cursor-pointer"
-          @click="() => setPreviousWeek()"
-        />
-        <ArrowCircleRightIcon
-          class="hover:cursor-pointer"
-          @click="() => setNextWeek()"
-        />
-      </div>
-
-      <div class="relative ml-8 mr-4">
-        <transition-group
-          name="slide-fade"
-          mode="out-in"
-          class="grid grid-cols-7 gap-3"
-          tag="div"
-        >
-          <div
-            v-for="(day, index) in daysOfWeek"
-            :key="index + day.get('date')"
-            class="h-28 w-full flex cursor-pointer "
-            @click="
-              () => {
-                setSelectedDate(day)
-              }
-            "
-          >
-            <div class="px-2 mr-1 flex items-end">
-              <ol
-                class="h-1/2 relative border-l border-gray-200 dark:border-gray-700"
-              >
-                <li class="">
-                  <div class="absolute dot-position-horizontal">
-                    <span
-                      class="mb-1 flex justify-center items-center w-2 h-2 border bg-black border-gray-400 rounded-full"
-                    >
-                    </span>
-                    <span
-                      v-for="event in getEventByDate(day)"
-                      :key="`${event.id}-rounded`"
-                      :style="{
-                        background: event.color,
-                      }"
-                      class="mb-1 flex justify-center items-center w-2 h-2 border bg-black border-gray-400 rounded-full"
-                    >
-                    </span>
-                  </div>
-                </li>
-              </ol>
-            </div>
-            <div
-              class="flex flex-col justify-center"
-              :class="{
-                'text-gray-400': !dayjs(selectedDate).isSame(day, 'day'),
-              }"
-            >
-              <h1 class="text-2xl">
-                {{ day.get('date') }}
-              </h1>
-              <h3 class="text-sm">{{ getDayName(day.get('day')) }}</h3>
-            </div>
-          </div>
-        </transition-group>
-      </div>
+  <div class="mt-1 relative">
+    <div
+      class="absolute m-auto left-0 right-0 w-full flex justify-between transform -translate-y-1/2 top-1/2"
+    >
+      <ArrowCircleLeftIcon
+        class="hover:cursor-pointer"
+        @click="() => setPreviousWeek()"
+      />
+      <ArrowCircleRightIcon
+        class="hover:cursor-pointer"
+        @click="() => setNextWeek()"
+      />
     </div>
-  </client-only>
+
+    <div class="relative ml-8 mr-4">
+      <transition-group
+        name="slide-fade"
+        mode="out-in"
+        class="grid grid-cols-7 gap-3"
+        tag="div"
+      >
+        <div
+          v-for="(day, index) in daysOfWeek"
+          :key="index + day.get('date')"
+          class="h-28 w-full flex cursor-pointer"
+          @click="
+            () => {
+              setSelectedDate(day)
+            }
+          "
+        >
+          <div class="px-2 mr-1 flex items-end">
+            <ol
+              class="h-1/2 relative border-l border-gray-200 dark:border-gray-700"
+            >
+              <li class="">
+                <div class="absolute dot-position-horizontal">
+                  <span
+                    class="mb-1 flex justify-center items-center w-2 h-2 border bg-black border-gray-400 rounded-full"
+                  >
+                  </span>
+                  <span
+                    v-for="event in getEventByDate(day)"
+                    :key="`${event.id}-rounded`"
+                    :style="{
+                      background: event.color,
+                    }"
+                    class="mb-1 flex justify-center items-center w-2 h-2 border bg-black border-gray-400 rounded-full"
+                  >
+                  </span>
+                </div>
+              </li>
+            </ol>
+          </div>
+          <div
+            class="flex flex-col justify-center"
+            :class="{
+              'text-gray-400': !dayjs(selectedDate).isSame(day, 'day'),
+            }"
+          >
+            <h1 class="text-2xl">
+              {{ day.get('date') }}
+            </h1>
+            <h3 class="text-sm">{{ getDayName(day.get('day')) }}</h3>
+          </div>
+        </div>
+      </transition-group>
+    </div>
+  </div>
 </template>
 
 <script>

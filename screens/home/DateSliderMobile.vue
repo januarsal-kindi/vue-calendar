@@ -1,5 +1,4 @@
 <template>
-  <client-only placeholder="Loading...">
     <div class="mt-1 relative flex justify-center items-center">
       <div
         class="absolute m-auto left-0 right-0 w-full flex justify-between transform -translate-y-1/2 top-1/2"
@@ -51,7 +50,6 @@
         </transition>
       </div>
     </div>
-  </client-only>
 </template>
 
 <script>
